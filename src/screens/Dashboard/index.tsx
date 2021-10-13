@@ -1,7 +1,10 @@
 import React from "react";
 import { getBottomSpace } from "react-native-iphone-x-helper";
 import { HighlightCard } from "../../components/HighlightCard";
-import { TransactionCard, TransactionCardProps } from "../../components/TransactionCard";
+import {
+  TransactionCard,
+  TransactionCardProps,
+} from "../../components/TransactionCard";
 import {
   Container,
   Header,
@@ -16,37 +19,38 @@ import {
   Transactions,
   Title,
   TransactionsList,
+  LogoutButton,
 } from "./styles";
 
-export interface DataListProps extends TransactionCardProps{
-  id: string
+export interface DataListProps extends TransactionCardProps {
+  id: string;
 }
 
 export function Dashboard() {
   const data: DataListProps[] = [
     {
-      id: '1',
+      id: "1",
       title: "Desenvolvimento de site",
       amount: "R$ 999999,99",
       category: { name: "Vendas", icon: "dollar-sign" },
       date: "01/01/2021",
-      type: 'positive'
+      type: "positive",
     },
     {
-      id: '2',
+      id: "2",
       title: "Mercado",
       amount: "R$ 400,99",
       category: { name: "Comptas", icon: "coffee" },
       date: "01/01/2021",
-      type: 'negative'
+      type: "negative",
     },
     {
-      id: '3',
+      id: "3",
       title: "Salario",
       amount: "R$ 1000,99",
       category: { name: "Ganhos", icon: "shopping-bag" },
       date: "01/01/2021",
-      type: 'positive'
+      type: "positive",
     },
   ];
 
@@ -65,7 +69,9 @@ export function Dashboard() {
               <UserName>Marlon da costa</UserName>
             </User>
           </UserInfo>
-          <PowerButton name="power" />
+          <LogoutButton onPress={() => {}}>
+            <PowerButton name="power" />
+          </LogoutButton>
         </UserWrapper>
       </Header>
       <HighlightCards>
@@ -93,7 +99,7 @@ export function Dashboard() {
         <TransactionsList
           data={data}
           renderItem={({ item }) => <TransactionCard data={item} />}
-          keyExtractor={item => item.id}
+          keyExtractor={(item) => item.id}
         />
       </Transactions>
     </Container>
