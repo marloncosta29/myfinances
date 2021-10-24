@@ -10,31 +10,30 @@ import {
   Date,
 } from "./styles";
 
-interface Category{
-  name: string
-  icon: string
+interface Category {
+  name: string;
+  icon: string;
 }
 
-
-export interface TransactionCardProps{
-  type: 'positive' | 'negative'
-  title: string
-  amount: string
-  category: Category
-  date: string
+export interface TransactionCardProps {
+  type: "positive" | "negative";
+  title: string;
+  preco: string;
+  category: Category;
+  date: string;
 }
 
-interface Props{
-  data: TransactionCardProps
+interface Props {
+  data: TransactionCardProps;
 }
 
-export function TransactionCard({data}: Props) {
+export function TransactionCard({ data }: Props) {
   return (
     <Container>
       <Title>{data.title}</Title>
       <Amount type={data.type}>
-        {data.type === 'negative' && '- '}
-        {data.amount}
+        {data.type === "negative" && "- "}
+        {data.preco}
       </Amount>
       <Footer>
         <Category>
