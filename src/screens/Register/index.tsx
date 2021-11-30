@@ -44,7 +44,6 @@ const categoryDefault = {
 export function Register() {
   const navigation = useNavigation();
   const { user } = useAuth();
-  const datakey = `@myfinances:transactions_user:${user.id}`;
   const {
     handleSubmit,
     formState: { errors },
@@ -85,6 +84,7 @@ export function Register() {
       date: new Date(),
     };
     try {
+      const datakey = `@myfinances:transactions_user:${user.id}`;
       const transactions = await AsyncStorage.getItem(datakey).then((data) => {
         if (data) {
           return JSON.parse(data);
@@ -147,7 +147,7 @@ export function Register() {
           </Fields>
           <Button title="Enviar" onPress={handleSubmit(onSubmit)} />
         </Form>
-        <Modal visible={categoryModalOpen}>
+        <Modal testID="modal-category" visible={categoryModalOpen}>
           <CategorySelect
             category={category}
             setCategory={setCategory}
